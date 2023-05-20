@@ -12,12 +12,12 @@ public class Cliente {
     private int idCliente;
     private String nome;
     private String endereco;
-    private int telefone;
+    private String telefone;
 
 public Cliente() {
     }
 
-    public Cliente(int idCliente, String nome, String endereco, int telefone) {
+    public Cliente(int idCliente, String nome, String endereco, String telefone) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.endereco = endereco;
@@ -37,7 +37,7 @@ public Cliente() {
         return nome;
     }
 
-    public void setnome(String marca) {
+    public void setnome(String nome) {
         this.nome = nome;
     }
 
@@ -49,13 +49,21 @@ public Cliente() {
         this.endereco = endereco;
     }
 
-    public int gettelefone() {
+    public String gettelefone() {
         return telefone;
     }
 
-    public void settelefone(int telefone) {
+    public void settelefone(String telefone) {
         this.telefone = telefone;
     }
-}
+ }
+
+           
+    
+    
+    
+
+
+
 
     
