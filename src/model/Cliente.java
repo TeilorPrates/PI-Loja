@@ -11,54 +11,73 @@ package model;
 public class Cliente {
     private int idCliente;
     private String nome;
+    private String cpf;
+    private String cnpj;
     private String endereco;
     private String telefone;
 
-public Cliente() {
+    public Cliente() {
     }
 
-    public Cliente(int idCliente, String nome, String endereco, String telefone) {
+   
+    public Cliente(int idPessoa, String nome, String cpf, String endereco, String telefone) {
         this.idCliente = idCliente;
         this.nome = nome;
+        this.cpf = cpf;
+        this.cnpj = cnpj;
         this.endereco = endereco;
         this.telefone = telefone;
-        
     }
 
-    public int getidCliente() {
+    
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setidCliente(int idCliente ) {
+    
+    public void setIdCliente(int idPessoa) {
         this.idCliente = idCliente;
     }
 
-    public String getnome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setnome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getendereco() {
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    public String getCnpj() {
+        return cnpj;
+    }
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+    
+    public String getEndereco() {
         return endereco;
     }
 
-    public void setendereco(String endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 
-    public String gettelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void settelefone(String telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
- }
+}
 
-           
     
     
     

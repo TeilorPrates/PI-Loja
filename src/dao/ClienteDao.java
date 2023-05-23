@@ -19,44 +19,47 @@ import model.Cliente;
 public class ClienteDao {
     public void ClienteDAO(Cliente pVO) {
         try {
-            //buscar conexão com BD
+           
             Connection con = Conexao.getConexao();
-            //criar script sql de insert
+            
             String sql = "insert into pessoa values (null, ?,?,?,?)";
-            //criar espaço para executar script
+            
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, pVO.getidCliente());
-            pst.setString(2, pVO.getendereco());
-            pst.setString(3, pVO.getnome());
-            pst.setString(4, pVO.gettelefone());
+            pst.setInt(1, pVO.getIdCliente());
+            pst.setString(2, pVO.getEndereco());
+            pst.setString(3, pVO.getCpf());
+            pst.setString(4, pVO.getCnpj());
+            pst.setString(5, pVO.getTelefone());
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Erro ao cadastrar Pessoa.\n"
+            System.out.println("Erro ao cadastrar Cliente.\n"
                     + e.getMessage());
         }
     }//fim cadastroPessoa
     
     public ArrayList<Cliente> getidCliente(){
-        ArrayList<Cliente> pessoas = new ArrayList<>();
+        ArrayList<Cliente> Cliente = new ArrayList<>();
         try {
             Connection con = Conexao.getConexao();
-            String sql = "select * from pessoa";
+            String sql = "select * from cliente";
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
                 Cliente c = new Cliente();
                 // lado do java |x| lado do banco
-                c.setidCliente(rs.getInt("idCliente"));
-                c.setnome(rs.getString("nome"));
-                c.setendereco(rs.getString("endereco"));              
-                c.settelefone(rs.getString("telefone"));
+                c.setIdCliente(rs.getInt("idCliente"));
+                c.setNome(rs.getString("nome"));
+                c.setEndereco(rs.getString("endereco"));              
+                c.setTelefone(rs.getString("telefone"));
+                c.setCnpj(rs.getString("cnpj"));
+                c.setCpf(rs.getString("cpf"));
                 Cliente.add(c);
             }
         } catch (SQLException e) {
             System.out.println("Erro ao listar clientes.\n"
                     + e.getMessage());
         }
-        return pessoas;
+        return Cliente;
     }
     
     public Cliente getPessoaByDoc(String idCliente){
@@ -69,10 +72,12 @@ public class ClienteDao {
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
                 // lado do java |x| lado do banco
-                c.setidCliente(rs.getInt("idPessoa"));
-                c.setendereco(rs.getString("nome"));
-                c.setnome(rs.getString("cpf"));
-                c.settelefone(rs.getString("telefone"));
+                c.setIdCliente(rs.getInt("idCliente"));
+                c.setNome(rs.getString("nome"));
+                c.setCpf(rs.getString("cpf"));
+                c.setCnpj(rs.getString("cnpj"));
+                c.setTelefone(rs.getString("telefone"));
+                c.setEndereco(rs.getString("Endereco"));
                 
             }
         } catch (SQLException e) {
@@ -82,7 +87,7 @@ public class ClienteDao {
         return c;
     }
     
-    public void atualizarPessoaDAO(Pessoa pVO){
+    public void atualizarClienteDAO(Cliente pVO){
         try {
             Connection con = Conexao.getConexao();
             String sql = "update pessoa set nome = ?, endereco = ?, telefone = ?"
@@ -92,6 +97,7 @@ public class ClienteDao {
             pst.setString(2, pVO.getEndereco());
             pst.setString(3, pVO.getTelefone());
             pst.setString(4, pVO.getCpf());
+            pst.setString(5, pVO.getCnpj());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao atualizar Pessoa.\n"
@@ -99,18 +105,18 @@ public class ClienteDao {
         }
     }
     
-    public void deletarPessoaDAO(String cpf){
+    public void deletarClienteDAO(String cpf){
         try {
             Connection con = Conexao.getConexao();
-            String sql = "delete from pessoa where cpf = ?";
+            String sql = "delete from Cliente where cpf = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, cpf);
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Erro ao deletar Pessoa.\n"
+            System.out.println("Erro ao deletar Cliente.\n"
                     + e.getMessage());
         }
     }
     
 }
-}
+
