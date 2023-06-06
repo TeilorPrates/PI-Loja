@@ -9,4 +9,28 @@ package dao;
  * @author 182110084
  */
 
+public class DAOFactory {
+
+    private static ClienteDao cDAO = new ClienteDao();
+    private static FornecedorDao fDAO = new FornecedorDao();
+
+    public static ClienteDao getClienteDao;
+
+    public static ClienteDao getClienteDao() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public static FornecedorDao getFornecedorDao() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+{
+    }
+    
+    public static FornecedorDao getFornecedorDao;
+
+    {
+
+    }
+
+}
   
